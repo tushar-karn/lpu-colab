@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color: white;
+        }
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+  
+      /* ::selection {
+        background: #d5bbf7;
+      } */
+      .card {
+        max-width: 850px;
+        width: 98%;
+        margin-top: 40px;
+        /* margin: 170px auto; */
+        /* background: #fff; */
+        border-radius: 5px;
+        padding: 0px 0px 0px 20px;
+        /* box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15); */
+      }
+      .card .title {
+        font-size: 22px;
+        font-weight: 500;
+      }
+      .card .content {
+        margin-top: 20px;
+      }
+      .card label.box {
+        background: #eae9e9;
+        margin-top: 12px;
+        padding: 10px 12px;
+        display: flex;
+        border-radius: 5px;
+        border: 2px solid transparent;
+        cursor: pointer;
+        transition: all 0.25s ease;
+      }
+      #one:checked ~ label.first,
+      #two:checked ~ label.second,
+      #three:checked ~ label.third,
+      #four:checked ~ label.fourth {
+        border-color: #3403fc;
+        background: #3403fc;
+      }
+      /* .card label.box:hover {
+        background: #d5bbf7;
+      } */
+      .card label.box .circle {
+        height: 20px;
+        width: 20px;
+        background: #ffffff;
+        border: 5px solid transparent;
+        display: inline-block;
+        margin-right: 15px;
+        border-radius: 50%;
+        transition: all 0.25s ease;
+        box-shadow: inset -4px -4px 10px rgba(0, 0, 0, 0.2);
+      }
+      #one:checked ~ label.first .circle,
+      #two:checked ~ label.second .circle,
+      #three:checked ~ label.third .circle,
+      #four:checked ~ label.fourth .circle {
+        border-color: white;
+        background: #3403fc;
+        color: white;
+      }
+      #one:checked ~ label.first .yearly,
+      #two:checked ~ label.second .yearly,
+      #three:checked ~ label.third .yearly,
+      #four:checked ~ label.fourth .yearly {
+        color: white;
+      }
+      .card label.box .plan {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        background-color: transparent;
+      }
+      .card input[type="radio"] {
+        display: none;
+      }
+      .yearly {
+        color: black;
+        background-color: transparent;
+      }
+    </style>
+</head>
+<body>
+    <div style="background-color: rgb(225, 232, 252);height: 60px; width: 100%;">
+        <h1
+        style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 20px; padding: 10px;font-weight: 500;background-color:rgb(225, 232, 252) ;">Answer here</h1>
+        <div class="card">
+            <!-- <div class="title">Choose Your Course</div> -->
+            <div class="content">
+              <input type="radio" name="rd" id="one" />
+              <input type="radio" name="rd" id="two" />
+              <input type="radio" name="rd" id="three" />
+              <input type="radio" name="rd" id="four" />
+      
+              <label for="one" class="box first">
+                <div class="plan">
+                  <span class="circle"></span>
+                  <span class="yearly">5</span>
+                </div>
+                <!-- <span class="price">100$/year</span> -->
+              </label>
+              <!--  -->
+              <label for="two" class="box second">
+                <div class="plan">
+                  <span class="circle"></span>
+                  <span class="yearly">10</span>
+                </div>
+                <!-- <span class="price">120$/year</span> -->
+              </label>
+              <!--  -->
+              <label for="three" class="box third">
+                <div class="plan">
+                  <span class="circle"></span>
+                  <span class="yearly">Compile Time Error</span>
+                </div>
+                <!-- <span class="price">150$/year</span> -->
+              </label>
+              <!--  -->
+              <label for="four" class="box fourth">
+                <div class="plan">
+                  <span class="circle"></span>
+                  <span class="yearly">Syntex Error</span>
+                </div>
+                <!-- <span class="price">250$/year</span> -->
+              </label>
+              <!--  -->
+            </div>
+          </div>
+    </div>
+</body>
+</html>

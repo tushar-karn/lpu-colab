@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sticky Navbar</title>
+    <style>
+      /* Reset margin and padding for the entire page */
+      * {
+        margin: 0;
+        padding: 0;
+        /* overflow: hidden; */
+        background-color: white;
+      }
+
+      /* Styles for the sticky navigation bar */
+      .navbar {
+        position: sticky;
+        top: 0;
+
+        /* background-color: #d5e7fb;  */
+        /* background-image: url(Screenshot\ \(241\)ftgj.png) ; */
+        /* background-size: cover; */
+        /* background-position: center; */
+        width: 60%;
+        height: 80px;
+        /* padding: 18px;  */
+        /* margin: 0;  */
+        /* color: black;  */
+      }
+
+      /* Center the text in the navigation bar */
+      .navbar-text {
+        text-align: left;
+      }
+      /* width */
+      ::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      /* Track */
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px rgb(180, 180, 180);
+        border-radius: 10px;
+      }
+
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        background: #fffefe;
+        border-radius: 1px;
+      }
+
+      h5 {
+        color: #413f3f;
+        font-size: 17px;
+        font-weight: 495;
+      }
+      h6{
+        background-color: transparent;
+        padding: 10px;
+        font-size: 20px;
+      }
+      p {
+        color: #413f3f;
+      }
+      span {
+        color: #676666;
+        font-weight: 700;
+      }
+      .ph6{
+        background-color: transparent;
+        padding: 10px;
+      }
+
+      /* Handle on hover */
+      /* ::-webkit-scrollbar-thumb:hover {
+        background: #b0000;
+      } */
+    </style>
+  </head>
+  <body>
+    <!-- Create the sticky navigation bar -->
+
+    <!-- The rest of your content goes here -->
+    <div
+      style="
+        height: 1000px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 25px;
+      "
+    >
+      <h2 style="font-size: 20px">Single File Programming Question</h2>
+      <br />
+      <h4 style="color: #676666; font-size: 18px"><u>Problem Statement</u></h4>
+      <br />
+      <h5>
+        Imagine a scenario where you are developing a software system for a
+        company that manages inventory for two different warehouses. Each
+        warehouse's inventory is represented as a Binary Search Tree (BST)
+        containing unique product IDs.
+      </h5>
+      <br />
+      <h5>
+        Your task is to create a program that checks if the inventory in both
+        warehouses is identical. The program should compare the two BSTs and
+        determine whether they contain the same product IDs or not.
+      </h5>
+      <br />
+      <h5><span>Input format :</span></h5>
+      <!-- <h5><span>Fields:</span></h5> -->
+      <h5>
+        The first line of input consists of the space-separated product IDs for
+        the first warehouse's inventory, terminated by -1.
+      </h5><br>
+      <h5>
+        The second line consists of the space-separated product IDs for the
+        second warehouse's inventory, terminated by -1.
+      </h5>
+      <br />
+      <h5><span>Output format :</span></h5>
+      <h5>
+        If the inventories of both warehouses are identical, print "Both BSTs are identical"
+      </h5>
+      <h5>Otherwise, print "BSTs are not identical"</h5>
+      <br />
+      <h5>
+        <span>Sample test cases :</span>
+      </h5><br>
+      <div style="display: flex; padding: 20px;">
+      <div style="height: 140px;width: 200px;background-color: rgb(245, 248, 248); border-radius: 7px;">
+        <h6>Input 1 :</h6>
+        <p class="ph6">5 3 8 2 4 -1</p>
+        <p class="ph6">5 3 8 2 4 -1</p>
+      </div>
+      <div style="height: 140px;width: 220px;background-color: rgb(245, 248, 248); border-radius: 7px;margin: 0px 0px 0px 20px;">
+        <h6>Output 1 :</h6>
+        <p class="ph6">Both BSTs are identical</p>
+      </div>
+      </div>
+      <div style="display: flex; padding: 20px;">
+        <div style="height: 140px;width: 200px;background-color: rgb(245, 248, 248); border-radius: 7px;">
+          <h6>Input 2 :</h6>
+          <p class="ph6">10 5 15 -1</p>
+          <p class="ph6">10 5 20 -1</p>
+        </div>
+        <div style="height: 140px;width: 220px;background-color: rgb(245, 248, 248); border-radius: 7px;margin: 0px 0px 0px 20px;">
+          <h6>Output 2 :</h6>
+          <p class="ph6">BSTs are not identical</p>
+        </div>
+        </div>
+        <div style="height: 170px;width: 435px;background-color: rgb(245, 248, 248); border-radius: 7px;margin: 0px 20px 20px 20px;;">
+          <h6>Note :</h6>
+          <p class="ph6">The program will be evaluated only after the “Submit Code” is clicked. </p>
+          <p class="ph6">Extra spaces and new line characters in the program output will result in the failure of the test case. </p>
+        </div>
+        <div>
+          <h1></h1>
+        </div>
+    </div>
+  </body>
+</html>

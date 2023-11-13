@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>C++ Online Compiler</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.css"
+    />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/theme/darcula.min.css"
+    /> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.0/mode/clike/clike.min.js"></script>
+    <link rel="stylesheet" href="comp.css" />
+  </head>
+  <body>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background-color: #111;
+        color: #fff;
+      }
+
+      .container {
+        width: 40%;
+        margin: 0 auto;
+        padding: 20px;
+        /* background-color: #fff; */
+        background-color: #111;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Style the CodeMirror editor */
+      .CodeMirror {
+        /* border: 1px solid #ccc; */
+        height: 600px; /* Set the height to 700px */
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #0074d9;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+      }
+
+      /* Custom CSS for specific keywords and symbols */
+      .cm-keyword {
+        color: red;
+      } /* Change color of keywords like 'using', 'public', etc. */
+      .cm-operator {
+        color: red;
+      } /* Change color of operators like '>>', '<<', '+', '-', '*', '/', '=', '%' */
+      .cm-atom {
+        color: red;
+      } /* Change color of 'include', 'return' */
+
+      .c {
+        display: flex;
+        background-color: #111;
+        color: white;
+      }
+      .c h4 {
+        display: flex;
+        /* padding-left:2 40px; */
+        /* float: right; */
+        display: inline;
+        /* padding-right: 800px; */
+      }
+      .c h5 {
+        display: flex;
+        /* padding-left:2 40px; */
+        /* float: right; */
+        padding-left: 260px;
+      }
+      /* //////////////////////////////// */
+
+      .cm-s-darcula {
+        font-family: Consolas, Menlo, Monaco, "Lucida Console",
+          "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono",
+          "Courier New", monospace, serif;
+      }
+
+      .cm-s-darcula.CodeMirror {
+        background: black;
+        color: #a9b7c6;
+      }
+
+      .cm-s-darcula span.cm-meta {
+        color: #bbb529;
+      }
+
+      .cm-s-darcula span.cm-number {
+        color: #6897bb;
+      }
+
+      .cm-s-darcula span.cm-keyword {
+        color: #cc7832;
+        line-height: 1em;
+        font-weight: 700;
+      }
+
+      .cm-s-darcula span.cm-def {
+        color: #a9b7c6;
+        font-style: italic;
+      }
+
+      .cm-s-darcula span.cm-variable {
+        color: #a9b7c6;
+      }
+
+      .cm-s-darcula span.cm-variable-2 {
+        color: #a9b7c6;
+      }
+
+      .cm-s-darcula span.cm-variable-3 {
+        color: #9876aa;
+      }
+
+      .cm-s-darcula span.cm-type {
+        color: #abc;
+        font-weight: 700;
+      }
+
+      .cm-s-darcula span.cm-property {
+        color: #ffc66d;
+      }
+
+      .cm-s-darcula span.cm-operator {
+        color: #a9b7c6;
+      }
+
+      .cm-s-darcula span.cm-string {
+        color: #6a8759;
+      }
+
+      .cm-s-darcula span.cm-string-2 {
+        color: #6a8759;
+      }
+
+      .cm-s-darcula span.cm-comment {
+        color: #61a151;
+        font-style: italic;
+      }
+
+      .cm-s-darcula span.cm-link {
+        color: #cc7832;
+      }
+
+      .cm-s-darcula span.cm-atom {
+        color: #cc7832;
+      }
+
+      .cm-s-darcula span.cm-error {
+        color: #bc3f3c;
+      }
+
+      .cm-s-darcula span.cm-tag {
+        color: #629755;
+        font-weight: 700;
+        font-style: italic;
+        text-decoration: underline;
+      }
+
+      .cm-s-darcula span.cm-attribute {
+        color: #6897bb;
+      }
+
+      .cm-s-darcula span.cm-qualifier {
+        color: #6a8759;
+      }
+
+      .cm-s-darcula span.cm-bracket {
+        color: #a9b7c6;
+      }
+
+      .cm-s-darcula span.cm-builtin {
+        color: #ff9e59;
+      }
+
+      .cm-s-darcula span.cm-special {
+        color: #ff9e59;
+      }
+
+      .cm-s-darcula span.cm-matchhighlight {
+        color: #fff;
+        background-color: rgba(50, 89, 48, 0.7);
+        font-weight: 400;
+      }
+
+      .cm-s-darcula span.cm-searching {
+        color: #fff;
+        background-color: rgba(61, 115, 59, 0.7);
+        font-weight: 400;
+      }
+
+      .cm-s-darcula .CodeMirror-cursor {
+        border-left: 1px solid #a9b7c6;
+      }
+
+      .cm-s-darcula .CodeMirror-activeline-background {
+        background: #323232;
+      }
+
+      .cm-s-darcula .CodeMirror-gutters {
+        background: #313335;
+        border-right: 1px solid #313335;
+      }
+
+      .cm-s-darcula .CodeMirror-guttermarker {
+        color: #ffee80;
+      }
+
+      .cm-s-darcula .CodeMirror-guttermarker-subtle {
+        color: #d0d0d0;
+      }
+
+      .cm-s-darcula .CodeMirrir-linenumber {
+        color: #606366;
+      }
+
+      .cm-s-darcula .CodeMirror-matchingbracket {
+        background-color: #3b514d;
+        color: #ffef28 !important;
+        font-weight: 700;
+      }
+
+      .cm-s-darcula div.CodeMirror-selected {
+        background: #214283;
+      }
+
+      .CodeMirror-hints.darcula {
+        font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+        color: #9c9e9e;
+        background-color: #3b3e3f !important;
+      }
+
+      .CodeMirror-hints.darcula .CodeMirror-hint-active {
+        background-color: #494d4e !important;
+        color: #9c9e9e !important;
+      }
+
+      /* ////////////////////////////////// */
+    </style>
+    <!-- <div>
+        <h3>Find your code here</h3>
+    </div> -->
+    <div class="container">
+      <div class="c">
+        <h4>Find your code here &nbsp; &nbsp;</h4>
+        <h5>C++(17)</h5>
+        <a href=""><i class="fa-solid fa-angle-down" style="color: white;"></i></a>
+        <!-- <img src="down-arrow_271210.png" style="height: 10px; width: 10px; ;" alt="" srcset=""> -->
+      </div>
+      <!-- <h3>
+        Find your code here &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        C++(17)
+      </h3> -->
+      <!-- <div>
+            <h3>C++(17)</h3>
+        </div> -->
+
+      <textarea
+        id="cpp-code"
+        placeholder="Enter your C++ code here..."
+      ></textarea>
+      <button id="compile-button">Compile</button>
+      <pre id="output"></pre>
+    </div>
+    <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    <script>
+      // Initialize CodeMirror on the textarea
+      const cppCodeTextarea = document.getElementById("cpp-code");
+      const codeEditor = CodeMirror.fromTextArea(cppCodeTextarea, {
+        lineNumbers: true, // Show line numbers
+        mode: "text/x-c++src", // Set the mode for C++ code
+        theme: "darcula", // Use the Darcula theme (dark mode)
+        extraKeys: { "Ctrl-Space": "autocomplete" }, // Enable code autocomplete
+      });
+
+      // Add event listener for the dark mode toggle button
+      document
+        .getElementById("dark-mode-toggle")
+        .addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+        });
+    </script>
+  </body>
+</html>
